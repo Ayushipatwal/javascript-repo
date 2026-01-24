@@ -1,0 +1,261 @@
+script>
+        // 1. SELECTING ELEMENTS
+        function demonstrateSelection() {
+            // Select by ID
+            const uniqueElement = document.getElementById('uniqueSpan');
+            uniqueElement.classList.add('highlight');
+            
+            // Select all by class
+            const allDemoTexts = document.querySelectorAll('.demo-text');
+            allDemoTexts.forEach(element => {
+                element.classList.add('highlight');
+            });
+        }
+
+        function resetSelection() {
+            const highlighted = document.querySelectorAll('.highlight');
+            highlighted.forEach(el => el.classList.remove('highlight'));
+        }
+
+        // 2. CHANGING CONTENT
+        function changeContent() {
+            const contentDiv = document.getElementById('contentDemo');
+            const newText = document.getElementById('newContent').value;
+            contentDiv.textContent = newText;
+        }
+
+        function changeWithHTML() {
+            const contentDiv = document.getElementById('contentDemo');
+            contentDiv.innerHTML = '<strong>Bold Text</strong> and <em>Italic Text</em> with <span class="highlight">highlighting</span>!';
+        }
+
+        // 3. MODIFYING ATTRIBUTES
+        let imageToggle = false;
+        function changeImage() {
+            const img = document.getElementById('demoImage');
+            imageToggle = !imageToggle;
+            if (imageToggle) {
+                img.setAttribute('src', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowTrCBKntQ1rhhKCO0oKKO2oEc6Gi7N43Nw&s');
+            } else {
+                img.setAttribute('src', 'https://via.placeholder.com/200x150/667eea/ffffff?text=Image+1');
+            }
+        }
+
+        function changeAlt() {
+            const img = document.getElementById('demoImage');
+            const currentAlt = img.getAttribute('alt');
+            img.setAttribute('alt', currentAlt + ' (Modified)');
+            alert('Alt text changed to: ' + img.getAttribute('alt'));
+        }
+
+
+        
+        // 4. STYLING ELEMENTS
+        function changeColor() {
+            const box = document.getElementById('styleBox');
+            const color = document.getElementById('colorSelect').value;
+            box.style.backgroundColor = color;
+        }
+
+        function animateBox() {
+            const box = document.getElementById('styleBox');
+            box.style.transform = 'rotate(360deg) scale(1.2)';
+            box.style.borderRadius = '50%';
+            
+            setTimeout(() => {
+                box.style.transform = 'rotate(0deg) scale(1)';
+                box.style.borderRadius = '8px';
+            }, 1000);
+        }
+
+        // 5. CREATING & ADDING ELEMENTS
+        function addItem() {
+            const input = document.getElementById('itemInput');
+            const itemText = input.value.trim();
+            
+            if (itemText === '') {
+                alert('Please enter an item name!');
+                return;
+            }
+            
+            const list = document.getElementById('dynamicList');
+            const li = document.createElement('li');
+            li.className = 'list-item';
+            
+            li.innerHTML = `
+                <span>${itemText}</span>
+                <button class="delete-btn" onclick="this.parentElement.remove()">Delete</button>
+            `;
+            
+            list.appendChild(li);
+            input.value = '';
+        }
+
+        function clearList() {
+            const list = document.getElementById('dynamicList');
+            list.innerHTML = '';
+        }
+
+        // 6. REMOVING ELEMENTS
+        function removeLastTask() {
+            const container = document.getElementById('removeDemo');
+            const tasks = container.querySelectorAll('.task-card');
+            if (tasks.length > 0) {
+                tasks[tasks.length - 1].remove();
+            }
+        }
+
+        function resetTasks() {
+            const container = document.getElementById('removeDemo');
+            container.innerHTML = `
+                <div class="task-card">Task 1: Learn DOM</div>
+                <div class="task-card">Task 2: Build Projects</div>
+                <div class="task-card">Task 3: Master JavaScript</div>
+            `;
+        }
+
+        // 7. EVENT LISTENERS
+        let count = 0;
+        const incrementBtn = document.getElementById('incrementBtn');
+        const counterDisplay = document.getElementById('counter');
+
+        incrementBtn.addEventListener('click', function() {
+            count++;
+            counterDisplay.textContent = count;
+            
+            // Add some visual feedback
+            counterDisplay.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                counterDisplay.style.transform = 'scale(1)';
+            }, 200);
+        });
+
+        function resetCounter() {
+            count = 0;
+            counterDisplay.textContent = count;
+        }
+
+        // Hover event
+        const hoverBtn = document.getElementById('hoverBtn');
+        hoverBtn.addEventListener('mouseenter', function() {
+            this.textContent = '🎉 You\'re hovering!';
+            this.style.transform = 'scale(1.1)';
+        });
+
+        hoverBtn.addEventListener('mouseleave', function() {
+            this.textContent = 'Hover Over Me';
+            this.style.transform = 'scale(1)';
+        });
+
+        // Keyboard event
+        const keyboardInput = document.getElementById('keyboardInput');
+        const keyDisplay = document.getElementById('keyDisplay');
+
+        keyboardInput.addEventListener('keyup', function(event) {
+            keyDisplay.textContent = `You typed: "${this.value}" | Last key: ${event.key}`;
+        });
+
+        // 8. TRAVERSING THE DOM
+        function highlightParent() {
+            const child2 = document.getElementById('child2');
+            const parent = child2.parentElement;
+            parent.style.border = '3px solid #f44336';
+            
+            setTimeout(() => {
+                parent.style.border = 'none';
+            }, 2000);
+        }
+
+        function highlightSiblings() {
+            const child2 = document.getElementById('child2');
+            const prevSibling = child2.previousElementSibling;
+            const nextSibling = child2.nextElementSibling;
+            
+            if (prevSibling) prevSibling.style.border = '3px solid #4caf50';
+            if (nextSibling) nextSibling.style.border = '3px solid #4caf50';
+            
+            setTimeout(() => {
+                if (prevSibling) prevSibling.style.border = 'none';
+                if (nextSibling) nextSibling.style.border = 'none';
+            }, 2000);
+        }
+
+        function highlightChildren() {
+            const parent = document.getElementById('parent');
+            const children = parent.children;
+            
+            for (let child of children) {
+                child.style.border = '3px solid #ff9800';
+            }
+            
+            setTimeout(() => {
+                for (let child of children) {
+                    child.style.border = 'none';
+                }
+            }, 2000);
+        }
+
+        // 9. TODO LIST PROJECT
+        function addTodo() {
+            const input = document.getElementById('todoInput');
+            const todoText = input.value.trim();
+            
+            if (todoText === '') {
+                alert('Please enter a task!');
+                return;
+            }
+            
+            const todoList = document.getElementById('todoList');
+            
+            // Create todo item
+            const todoItem = document.createElement('div');
+            todoItem.className = 'list-item';
+            todoItem.style.marginBottom = '10px';
+            
+            // Create checkbox
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.style.marginRight = '10px';
+            checkbox.style.transform = 'scale(1.5)';
+            
+            // Create text span
+            const textSpan = document.createElement('span');
+            textSpan.textContent = todoText;
+            
+            // Create delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.className = 'delete-btn';
+            
+            // Checkbox event
+            checkbox.addEventListener('change', function() {
+                if (this.checked) {
+                    textSpan.style.textDecoration = 'line-through';
+                    textSpan.style.opacity = '0.6';
+                } else {
+                    textSpan.style.textDecoration = 'none';
+                    textSpan.style.opacity = '1';
+                }
+            });
+            
+            // Delete button event
+            deleteBtn.addEventListener('click', function() {
+                todoItem.remove();
+            });
+            
+            // Append elements
+            todoItem.appendChild(checkbox);
+            todoItem.appendChild(textSpan);
+            todoItem.appendChild(deleteBtn);
+            todoList.appendChild(todoItem);
+            
+            // Clear input
+            input.value = '';
+        }
+
+        // Allow Enter key to add todo
+        document.getElementById('todoInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                addTodo();
+            }
+        });

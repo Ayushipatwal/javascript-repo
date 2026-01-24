@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auto Erase Words</title>
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 100px;
+    font-size: 24px;
+  }
+</style>
+</head>
+<body>
+
+<div id="word-container"></div>
+
+<script>
+const words = [
+  "apple", "banana", "cat", "dog", "elephant",
+  "fish", "grape", "hat", "ice", "jungle",
+  "kite", "lion", "monkey", "nest", "orange",
+  "pig", "queen", "rabbit", "sun", "tree",
+  "umbrella", "vase", "wolf", "x-ray", "yarn",
+  "zebra", "car", "book", "pen", "star"
+];
+
+const container = document.getElementById('word-container');
+
+let index = 0;
+
+// Function to display one word at a time
+function showWord() {
+  if (index < words.length) {
+    container.textContent = words[index]; // show word
+    index++;
+    setTimeout(() => {
+      container.textContent = ''; // erase after 1 second
+      showWord();
+    }, 1000); // 1 second delay
+  } else {
+    index = 0; // restart loop if you want
+    showWord();
+  }
+}
+
+showWord();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+   <div class="container">
+        <h1>🎯 DOM Manipulation Master Class</h1>
+
+        <!-- 1. SELECTING ELEMENTS -->
+        <div class="section">
+            <h2>1️⃣ Selecting Elements</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Before we can manipulate elements, we need to select them from the DOM.
+                <br><strong>Methods:</strong> 
+                <code>getElementById()</code>, 
+                <code>querySelector()</code>, 
+                <code>querySelectorAll()</code>
+            </div>
+            
+            <div class="demo-box" id="selectDemo">
+                <p class="demo-text">I'm a paragraph with class 'demo-text'</p>
+                <p class="demo-text">I'm another paragraph with the same class</p>
+                <span id="uniqueSpan">I'm a span with id 'uniqueSpan'</span>
+            </div>
+            
+            <button onclick="demonstrateSelection()">Select & Highlight Elements</button>
+            <button onclick="resetSelection()">Reset</button>
+        </div>
+
+        <!-- 2. CHANGING CONTENT -->
+        <div class="section">
+            <h2>2️⃣ Changing Content (innerHTML, textContent, innerText)</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> We can change what's inside an element.
+                <br><strong>Properties:</strong> 
+                <code>innerHTML</code> (can add HTML), 
+                <code>textContent</code> (text only)
+            </div>
+            
+            <div class="demo-box">
+                <div id="contentDemo">Original content here</div>
+            </div>
+            
+            <input type="text" id="newContent" placeholder="Enter new content" value="Hello DOM! 🚀">
+            <button onclick="changeContent()">Change Text</button>
+            <button onclick="changeWithHTML()">Add HTML Content</button>
+        </div>
+
+        <!-- 3. MODIFYING ATTRIBUTES -->
+        <div class="section">
+            <h2>3️⃣ Modifying Attributes</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Change element attributes like src, href, alt, etc.
+                <br><strong>Methods:</strong> 
+                <code>setAttribute()</code>, 
+                <code>getAttribute()</code>, 
+                <code>removeAttribute()</code>
+            </div>
+            
+            <div class="demo-box">
+                <img id="demoImage" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowTrCBKntQ1rhhKCO0oKKO2oEc6Gi7N43Nw&s" 
+                     alt="Demo Image" style="border-radius: 8px;">
+            </div>
+            
+            <button onclick="changeImage()">Change Image</button>
+            <button onclick="changeAlt()">Change Alt Text</button>
+        </div>
+
+        <!-- 4. STYLING ELEMENTS -->
+        <div class="section">
+            <h2>4️⃣ Styling Elements</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Modify CSS styles using JavaScript.
+                <br><strong>Properties:</strong> 
+                <code>element.style.property</code>, 
+                <code>classList.add()</code>, 
+                <code>classList.remove()</code>
+            </div>
+            
+            <div class="demo-box">
+                <div class="color-box" id="styleBox"></div>
+            </div>
+            
+            <select id="colorSelect">
+                <option value="#ff6b6b">Red</option>
+                <option value="#4ecdc4">Cyan</option>
+                <option value="#ffe66d">Yellow</option>
+                <option value="#95e1d3">Green</option>
+            </select>
+            <button onclick="changeColor()">Change Color</button>
+            <button onclick="animateBox()">Animate!</button>
+        </div>
+
+        <!-- 5. CREATING & ADDING ELEMENTS -->
+        <div class="section">
+            <h2>5️⃣ Creating & Adding Elements</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Create new elements and add them to the DOM.
+                <br><strong>Methods:</strong> 
+                <code>createElement()</code>, 
+                <code>appendChild()</code>, 
+                <code>append()</code>, 
+                <code>prepend()</code>
+            </div>
+            
+            <div class="demo-box" id="listContainer">
+                <ul id="dynamicList"></ul>
+            </div>
+            
+            <input type="text" id="itemInput" placeholder="Enter item name">
+            <button onclick="addItem()">Add Item</button>
+            <button onclick="clearList()">Clear All</button>
+        </div>
+
+        <!-- 6. REMOVING ELEMENTS -->
+        <div class="section">
+            <h2>6️⃣ Removing Elements</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Remove elements from the DOM.
+                <br><strong>Methods:</strong> 
+                <code>remove()</code>, 
+                <code>removeChild()</code>
+            </div>
+            
+            <div class="demo-box" id="removeDemo">
+                <div class="task-card">Task 1: Learn DOM</div>
+                <div class="task-card">Task 2: Build Projects</div>
+                <div class="task-card">Task 3: Master JavaScript</div>
+            </div>
+            
+            <button onclick="removeLastTask()">Remove Last Task</button>
+            <button onclick="resetTasks()">Reset Tasks</button>
+        </div>
+
+        <!-- 7. EVENT LISTENERS -->
+        <div class="section">
+            <h2>7️⃣ Event Listeners</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Make elements respond to user actions.
+                <br><strong>Method:</strong> 
+                <code>addEventListener(event, function)</code>
+            </div>
+            
+            <div class="demo-box">
+                <div class="counter" id="counter">0</div>
+                <button id="incrementBtn">Click Me!</button>
+                <button onclick="resetCounter()">Reset</button>
+            </div>
+            
+            <div style="margin-top: 15px;">
+                <button id="hoverBtn" style="background: #ff6b6b;">Hover Over Me</button>
+                <input type="text" id="keyboardInput" placeholder="Type something..." style="width: 300px;">
+                <p id="keyDisplay" style="margin-top: 10px; color: #667eea;"></p>
+            </div>
+        </div>
+
+        <!-- 8. TRAVERSING THE DOM -->
+        <div class="section">
+            <h2>8️⃣ Traversing the DOM</h2>
+            <div class="concept-explanation">
+                <strong>Concept:</strong> Navigate between elements (parent, children, siblings).
+                <br><strong>Properties:</strong> 
+                <code>parentElement</code>, 
+                <code>children</code>, 
+                <code>nextElementSibling</code>, 
+                <code>previousElementSibling</code>
+            </div>
+            
+            <div class="demo-box" id="familyTree">
+                <div id="grandparent" style="background: #ffe6e6; padding: 15px; border-radius: 8px;">
+                    Grandparent
+                    <div id="parent" style="background: #e6f2ff; padding: 15px; margin: 10px; border-radius: 8px;">
+                        Parent
+                        <div id="child1" style="background: #e6ffe6; padding: 10px; margin: 5px; border-radius: 8px;">Child 1</div>
+                        <div id="child2" style="background: #e6ffe6; padding: 10px; margin: 5px; border-radius: 8px;">Child 2</div>
+                        <div id="child3" style="background: #e6ffe6; padding: 10px; margin: 5px; border-radius: 8px;">Child 3</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="highlightParent()">Highlight Parent of Child 2</button>
+            <button onclick="highlightSiblings()">Highlight Siblings of Child 2</button>
+            <button onclick="highlightChildren()">Highlight All Children</button>
+        </div>
+
+        <!-- 9. PRACTICAL PROJECT -->
+        <div class="section">
+            <h2>9️⃣ Mini Project: Todo List</h2>
+            <div class="concept-explanation">
+                <strong>Putting it all together!</strong> This combines all DOM concepts: selecting, creating, styling, events, and removing elements.
+            </div>
+            
+            <div style="margin: 15px 0;">
+                <input type="text" id="todoInput" placeholder="Enter a task..." style="width: 60%;">
+                <button onclick="addTodo()">Add Todo</button>
+            </div>
+            
+            <div id="todoList"></div>
+        </div>
+    </div>

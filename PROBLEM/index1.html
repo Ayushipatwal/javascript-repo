@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Auto Change Images</title>
+<style>
+  body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 50px;
+  }
+  #image-container {
+    width: 300px;
+    height: 300px;
+    margin: auto;
+  }
+  #image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>
+</head>
+<body>
+
+<div id="image-container">
+  <img id="rotating-image" src="" alt="Rotating Image">
+</div>
+
+<script>
+const images = [
+  "https://upload.wikimedia.org/wikipedia/commons/1/15/Red_Apple.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
+  "https://c.ndtvimg.com/r5pagdt_upsc_625x300_14_July_18.jpg",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQowTrCBKntQ1rhhKCO0oKKO2oEc6Gi7N43Nw&s",
+  
+];
+
+const imgElement = document.getElementById('rotating-image');
+let index = 0;
+
+function showImage() {
+  imgElement.src = images[index]; // show current image
+  index++;
+  
+  if (index >= images.length) {
+    index = 0; // restart loop
+  }
+
+  setTimeout(showImage, 1000); // change every 1 second
+}
+
+showImage();
+</script>
+
+</body>
+</html>
